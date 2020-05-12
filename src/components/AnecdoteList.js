@@ -7,7 +7,8 @@ import { hideNotification } from '../reducers/notificationReducer'
 const Anecdotes = () => {
   const dispatch = useDispatch()
   const anecdotes = useSelector(state => state.anecdotes)
-
+  const filter = useSelector(state => state.filter)
+  
   const vote = (anecdote) => {
     const msg = `You voted for: '${anecdote.content}'`
     dispatch(showNotification(msg))
@@ -20,6 +21,7 @@ const Anecdotes = () => {
   return (
     <div>
       {anecdotes
+        .filter(anecdote => anecdote.content.includes(filter))
         .sort((a, b) => {
           return b.votes - a.votes
         })
