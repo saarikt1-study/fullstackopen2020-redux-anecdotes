@@ -7,7 +7,7 @@ const Anecdotes = () => {
   const anecdotes = useSelector(state => state)
 
   const vote = (id) => {
-    console.log('vote', id)
+    dispatch(voteForAnecdote(id))
   }
 
   return (
