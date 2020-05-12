@@ -12,7 +12,11 @@ const Anecdotes = () => {
 
   return (
     <div>
-      {anecdotes.map(anecdote =>
+      {anecdotes
+        .sort((a, b) => {
+          return b.votes - a.votes
+        })
+        .map(anecdote =>
         <div key={anecdote.id}>
           <div>
             {anecdote.content}
