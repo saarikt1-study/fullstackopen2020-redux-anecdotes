@@ -15,7 +15,14 @@ const Anecdotes = () => {
     setTimeout(() => {
       dispatch(hideNotification())
     }, 5000)
-    dispatch(voteForAnecdote(anecdote.id))
+
+    const newVotes = anecdote.votes + 1
+    const changedAnecdote = {
+      ...anecdote,
+      votes: newVotes
+    }
+
+    dispatch(voteForAnecdote(anecdote.id, changedAnecdote))
   }
 
   return (
