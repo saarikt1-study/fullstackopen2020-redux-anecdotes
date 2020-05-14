@@ -9,6 +9,8 @@ const reducer = (state = initialState, action) => {
     }
 }
 
+let timer
+
 export const setNotification = (msg, timeInSeconds) => {
   return async dispatch => {
     dispatch({
@@ -17,7 +19,9 @@ export const setNotification = (msg, timeInSeconds) => {
         msg
       }
     })
-    setTimeout(() => {
+    
+    clearTimeout(timer)
+    timer = setTimeout(() => {
      dispatch({
        type: 'NOTIFICATION',
        data: { msg: null }
